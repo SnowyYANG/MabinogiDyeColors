@@ -16,35 +16,36 @@
                         <Setter Property="Margin" Value="10 0 0 0"/>
                     </Style>
                 </StackPanel.Resources>
-                <RadioButton IsChecked="True">全彩</RadioButton>
-                <RadioButton>淡彩</RadioButton>
-                <RadioButton>皮革</RadioButton>
-                <RadioButton>丝绸</RadioButton>
-                <RadioButton>金属</RadioButton>
-                <RadioButton>武器</RadioButton>
+                <RadioButton x:Name="cloth" IsChecked="True">全彩</RadioButton>
+                <RadioButton x:Name="cloth_bright">淡彩</RadioButton>
+                <RadioButton x:Name="leather">皮革</RadioButton>
+                <RadioButton x:Name="silk">丝绸</RadioButton>
+                <RadioButton x:Name="metal">金属</RadioButton>
+                <RadioButton x:Name="weapon">武器</RadioButton>
             </StackPanel>
             <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
                 <TextBlock>
                     <Hyperlink>选择颜色</Hyperlink>
                 </TextBlock>
-                <TextBox Width="290"/>
-                <Button>搜索</Button>
+                <TextBox x:Name="input" Width="290"/>
+                <Button Click="Button_Click">搜索</Button>
             </StackPanel>
             <TextBlock>搜索输入范例</TextBlock>
             <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left">#FF0000</TextBox>
             <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left">R=0 G=0</TextBox>
             <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left">#008000 R&lt;64 B&lt;64</TextBox>
         </StackPanel>
-        <WrapPanel Margin="0 260 0 0">
+        <WrapPanel x:Name="output" Margin="0 260 0 0">
             <WrapPanel.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="Width" Value="128"/>
                     <Setter Property="TextAlignment" Value="Center"/>
                 </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Width" Value="128"/>
+                    <Setter Property="TextAlignment" Value="Center"/>
+                </Style>
             </WrapPanel.Resources>
-            <TextBlock>目标颜色</TextBlock>
-            <TextBlock>2</TextBlock>
-            <TextBlock>更多颜色</TextBlock>
         </WrapPanel>
     </Grid>
 </Window>
