@@ -26,6 +26,11 @@ namespace MabinogiDyeColors
             InitializeComponent();
         }
 
+        Brush CalculateForeground(Color background)
+        {
+            return 0.2126 * background.R + 0.7152 * background.G + 0.0722 * background.B > 128 ? Brushes.Black : Brushes.White;
+        }
+
         int i = 0;
         int moreColorsTimes = 0;
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -45,10 +50,10 @@ namespace MabinogiDyeColors
                     var s = str;
                     if (s[0] == '#') s = s.Substring(1);
                     Color target = Color.FromRgb(byte.Parse(s.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(s.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(s.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
-                    output.Children.Add(new TextBlock() { Background = new SolidColorBrush(target), Text = "目标颜色" });
+                    output.Children.Add(new TextBlock() { Background = new SolidColorBrush(target), Text = "目标颜色", Foreground = CalculateForeground(target) });
                     results.Sort((a, b) =>
                         (int)(2 * Math.Pow(a.R - target.R, 2) + 4 * Math.Pow(a.G - target.G, 2) + 3 * Math.Pow(a.B - target.B, 2) - 
-                        2 * Math.Pow(b.R - target.R, 2) + 4 * Math.Pow(b.G - target.G, 2) + 3 * Math.Pow(b.B - target.B, 2)));
+                        (2 * Math.Pow(b.R - target.R, 2) + 4 * Math.Pow(b.G - target.G, 2) + 3 * Math.Pow(b.B - target.B, 2))));
                 }
             }
             if (results.Count == 0)
@@ -57,9 +62,12 @@ namespace MabinogiDyeColors
             }
             else
             {
+                int n = 0;
                 foreach (var c in results)
                 {
-                    output.Children.Add(new TextBox() { Background = new SolidColorBrush(c), Text = "#" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2") });
+                    output.Children.Add(new TextBox() { Background = new SolidColorBrush(c), Text = "#" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2"), Foreground = CalculateForeground(c) });
+                    n++;
+                    if (n > 100) break;
                 }
             }
         }
