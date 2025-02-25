@@ -35,17 +35,20 @@ namespace MabinogiDyeColors
         int moreColorsTimes = 0;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(input.Text)) return;
             var searchStrings = input.Text.Split(' ');
             Color[] pallete = new Color[] { };
             List<Color> results = new List<Color>();
             if (cloth.IsChecked == true) pallete = Palettes.CLOTH;
-            foreach(Color c in pallete)
-            {
-                results.Add(c);
-            }
+            else MessageBox.Show("早期草稿版，只支持全彩。");
+            foreach (Color c in pallete)
+                {
+                    results.Add(c);
+                }
             output.Children.Clear();
             foreach(var str in searchStrings)
             {
+                if (string.IsNullOrWhiteSpace(str)) continue;
                 if (Regex.IsMatch(str, @"[0-9a-f]{6}$"))
                 {
                     var s = str;
@@ -56,6 +59,7 @@ namespace MabinogiDyeColors
                         (int)(2 * Math.Pow(a.R - target.R, 2) + 4 * Math.Pow(a.G - target.G, 2) + 3 * Math.Pow(a.B - target.B, 2) - 
                         (2 * Math.Pow(b.R - target.R, 2) + 4 * Math.Pow(b.G - target.G, 2) + 3 * Math.Pow(b.B - target.B, 2))));
                 }
+                else MessageBox.Show("早期草稿版，只支持颜色代码搜索，无法筛选RGB值。");
             }
             if (results.Count == 0)
             {
@@ -94,6 +98,14 @@ namespace MabinogiDyeColors
             colorDialog.ShowDialog();
             var color = colorDialog.Color;
             input.Text += "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
+        }
+
+        private void input_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Button_Click(null, null);
+            }
         }
     }
 }

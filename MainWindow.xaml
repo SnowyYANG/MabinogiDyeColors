@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MabinogiDyeColors"
         mc:Ignorable="d"
-        Title="洛奇染色药水颜色代码查询" Height="450" Width="810" FontSize="20">
+        Title="洛奇染色药水颜色代码查询（早期草稿版v20250225）" Height="450" Width="810" FontSize="20">
     <Grid>
         <Image Source="/cloth.png" Width="256" Height="256" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <StackPanel Margin="260 0 0 0">
@@ -17,23 +17,23 @@
                     </Style>
                 </StackPanel.Resources>
                 <RadioButton x:Name="cloth" IsChecked="True">全彩</RadioButton>
-                <RadioButton x:Name="cloth_bright">淡彩</RadioButton>
-                <RadioButton x:Name="leather">皮革</RadioButton>
-                <RadioButton x:Name="silk">丝绸</RadioButton>
-                <RadioButton x:Name="metal">金属</RadioButton>
-                <RadioButton x:Name="weapon">武器</RadioButton>
+                <RadioButton x:Name="cloth_bright" Opacity="0.05">淡彩</RadioButton>
+                <RadioButton x:Name="leather" Opacity="0.05">皮革</RadioButton>
+                <RadioButton x:Name="silk" Opacity="0.05">丝绸</RadioButton>
+                <RadioButton x:Name="metal" Opacity="0.05">金属</RadioButton>
+                <RadioButton x:Name="weapon" Opacity="0.05">武器</RadioButton>
             </StackPanel>
             <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
                 <TextBlock>
                     <Hyperlink Click="colorPicker_Click">选择颜色</Hyperlink>
                 </TextBlock>
-                <TextBox x:Name="input" Width="290"/>
+                <TextBox x:Name="input" Width="290" KeyDown="input_KeyDown"/>
                 <Button Click="Button_Click">搜索</Button>
             </StackPanel>
             <TextBlock>搜索输入范例：</TextBlock>
             <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left">#FF0000</TextBox>
-            <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left">R=0 G=0</TextBox>
-            <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left">#008000 R&lt;64 B&lt;64</TextBox>
+            <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left" Opacity="0.05">R=0 G=0</TextBox>
+            <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left" Opacity="0.05">#008000 R&lt;64 B&lt;64</TextBox>
         </StackPanel>
         <TextBlock Margin="0 235 0 0" HorizontalAlignment="Right">
             <Hyperlink Click="Hyperlink_Click">https://snowyyang.me/mabinogi/dye-colors</Hyperlink>
