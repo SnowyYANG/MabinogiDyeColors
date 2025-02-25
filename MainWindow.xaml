@@ -7,21 +7,22 @@
         mc:Ignorable="d"
         Title="洛奇染色药水颜色代码查询（早期草稿版v20250225）" Height="450" Width="810" FontSize="20">
     <Grid>
-        <Image Source="/cloth.png" Width="256" Height="256" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Image x:Name="img" Source="/cloth.png" Width="256" Height="256" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <StackPanel Margin="260 0 0 0">
             <StackPanel Orientation="Horizontal">
                 <StackPanel.Resources>
                     <Style TargetType="RadioButton">
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
                         <Setter Property="Margin" Value="10 0 0 0"/>
+                        <EventSetter Event="Checked" Handler="radio_Checked"/>
                     </Style>
                 </StackPanel.Resources>
                 <RadioButton x:Name="cloth" IsChecked="True">全彩</RadioButton>
-                <RadioButton x:Name="cloth_bright" Opacity="0.05">淡彩</RadioButton>
-                <RadioButton x:Name="leather" Opacity="0.05">皮革</RadioButton>
-                <RadioButton x:Name="silk" Opacity="0.05">丝绸</RadioButton>
-                <RadioButton x:Name="metal" Opacity="0.05">金属</RadioButton>
-                <RadioButton x:Name="weapon" Opacity="0.05">武器</RadioButton>
+                <RadioButton x:Name="cloth_bright">淡彩</RadioButton>
+                <RadioButton x:Name="leather">皮革</RadioButton>
+                <RadioButton x:Name="silk">丝绸</RadioButton>
+                <RadioButton x:Name="metal">金属</RadioButton>
+                <RadioButton x:Name="weapon">武器</RadioButton>
             </StackPanel>
             <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
                 <TextBlock>

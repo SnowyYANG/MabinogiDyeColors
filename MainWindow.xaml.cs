@@ -40,7 +40,11 @@ namespace MabinogiDyeColors
             Color[] pallete = new Color[] { };
             List<Color> results = new List<Color>();
             if (cloth.IsChecked == true) pallete = Palettes.CLOTH;
-            else MessageBox.Show("早期草稿版，只支持全彩。");
+            if (cloth_bright.IsChecked == true) pallete = Palettes.CLOTH_BRIGHT;
+            if (leather.IsChecked == true) pallete = Palettes.LEATHER;
+            if (silk.IsChecked == true) pallete = Palettes.SILK;
+            if (metal.IsChecked == true) pallete = Palettes.METAL;
+            if (weapon.IsChecked == true) pallete = Palettes.WEAPON;
             foreach (Color c in pallete)
                 {
                     results.Add(c);
@@ -106,6 +110,11 @@ namespace MabinogiDyeColors
             {
                 Button_Click(null, null);
             }
+        }
+
+        private void radio_Checked(object sender, RoutedEventArgs e)
+        {
+            img.Source = new BitmapImage(new Uri("/" + (sender as RadioButton).Name + ".png", UriKind.Relative));
         }
     }
 }

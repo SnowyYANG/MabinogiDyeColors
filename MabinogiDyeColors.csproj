@@ -105,5 +105,12 @@
   <ItemGroup>
     <Resource Include="cloth.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cloth_bright.png" />
+    <Resource Include="leather.png" />
+    <Resource Include="metal.png" />
+    <Resource Include="silk.png" />
+    <Resource Include="weapon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
