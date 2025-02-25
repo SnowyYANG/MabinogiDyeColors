@@ -7867,8 +7867,7 @@ Color.FromRgb(139,135,129),
 Color.FromRgb(93,87,88),
 Color.FromRgb(105,98,100),
 Color.FromRgb(96,101,109),
-Color.FromRgb(77,82,91)
-);
+Color.FromRgb(77,82,91),
 
         };
     }

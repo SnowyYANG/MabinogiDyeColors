@@ -71,6 +71,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="palette.CLOTH_BRIGHT.cs" />
+    <Compile Include="palette.LEATHER.cs" />
+    <Compile Include="palette.METAL.cs" />
+    <Compile Include="palette.SILK.cs" />
+    <Compile Include="palette.WEAPON.cs" />
     <Compile Include="Palettes.CLOTH.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

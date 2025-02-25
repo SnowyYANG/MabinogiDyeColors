@@ -9,7 +9,7 @@ namespace MabinogiDyeColors
 {
     static partial class Palettes
     {
-        public static readonly Color[] CLOTH = new Color[] {
+        public static readonly Color[] LEATHER = new Color[] {
 Color.FromRgb(83,84,36),
 Color.FromRgb(159,106,79),
 Color.FromRgb(149,86,52),
@@ -9984,8 +9984,7 @@ Color.FromRgb(146,68,59),
 Color.FromRgb(147,40,42),
 Color.FromRgb(109,57,39),
 Color.FromRgb(135,55,39),
-Color.FromRgb(140,61,45)
-);
+Color.FromRgb(140,61,45),
 
         };
     }

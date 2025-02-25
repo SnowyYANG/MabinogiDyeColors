@@ -391,8 +391,7 @@ Color.FromRgb(147,148,152),
 Color.FromRgb(148,150,152),
 Color.FromRgb(150,150,151),
 Color.FromRgb(149,150,153),
-Color.FromRgb(152,153,153)
-);
+Color.FromRgb(152,153,153),
 
         };
     }
