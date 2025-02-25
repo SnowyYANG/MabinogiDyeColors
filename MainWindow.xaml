@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MabinogiDyeColors"
         mc:Ignorable="d"
-        Title="洛奇染色药水颜色代码查询" Height="450" Width="800" FontSize="20">
+        Title="洛奇染色药水颜色代码查询" Height="450" Width="810" FontSize="20">
     <Grid>
         <Image Source="/cloth.png" Width="256" Height="256" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <StackPanel Margin="260 0 0 0">
@@ -25,7 +25,7 @@
             </StackPanel>
             <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
                 <TextBlock>
-                    <Hyperlink>选择颜色</Hyperlink>
+                    <Hyperlink Click="colorPicker_Click">选择颜色</Hyperlink>
                 </TextBlock>
                 <TextBox x:Name="input" Width="290"/>
                 <Button Click="Button_Click">搜索</Button>
@@ -35,18 +35,24 @@
             <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left">R=0 G=0</TextBox>
             <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left">#008000 R&lt;64 B&lt;64</TextBox>
         </StackPanel>
-        <WrapPanel x:Name="output" Margin="0 260 0 0">
-            <WrapPanel.Resources>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Width" Value="128"/>
-                    <Setter Property="TextAlignment" Value="Center"/>
-                </Style>
-                <Style TargetType="TextBox">
-                    <Setter Property="IsReadOnly" Value="True"/>
-                    <Setter Property="Width" Value="128"/>
-                    <Setter Property="TextAlignment" Value="Center"/>
-                </Style>
-            </WrapPanel.Resources>
-        </WrapPanel>
+        <TextBlock Margin="0 235 0 0" HorizontalAlignment="Right">
+            <Hyperlink Click="Hyperlink_Click">https://snowyyang.me/mabinogi/dye-colors</Hyperlink>
+        </TextBlock>
+        <ScrollViewer Margin="0 260 0 0">
+            <WrapPanel x:Name="output">
+                <WrapPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Width" Value="128"/>
+                        <Setter Property="TextAlignment" Value="Center"/>
+                    </Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="IsReadOnly" Value="True"/>
+                        <Setter Property="Width" Value="128"/>
+                        <Setter Property="TextAlignment" Value="Center"/>
+                    </Style>
+                </WrapPanel.Resources>
+            </WrapPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

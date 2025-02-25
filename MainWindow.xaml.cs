@@ -43,6 +43,7 @@ namespace MabinogiDyeColors
             {
                 results.Add(c);
             }
+            output.Children.Clear();
             foreach(var str in searchStrings)
             {
                 if (Regex.IsMatch(str, @"[0-9a-f]{6}$"))
@@ -67,9 +68,32 @@ namespace MabinogiDyeColors
                 {
                     output.Children.Add(new TextBox() { Background = new SolidColorBrush(c), Text = "#" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2"), Foreground = CalculateForeground(c) });
                     n++;
-                    if (n > 100) break;
+                    if (n > 300) break;
                 }
             }
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            var hyperlink = sender as Hyperlink;
+            if (hyperlink != null)
+            {
+                string navigateUri = "https://snowyyang.me/mabinogi/dye-colors"; // 替换为你想要导航的 URL
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = navigateUri,
+                    UseShellExecute = true
+                });
+            }
+        }
+
+        private void colorPicker_Click(object sender, RoutedEventArgs e)
+        {
+            //使用Windows.Forms.ColorDialog
+            System.Windows.Forms.ColorDialog colorDialog = new System.Windows.Forms.ColorDialog();
+            colorDialog.ShowDialog();
+            var color = colorDialog.Color;
+            input.Text += "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
         }
     }
 }
