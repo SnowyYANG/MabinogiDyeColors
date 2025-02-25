@@ -30,7 +30,7 @@
                 <TextBox x:Name="input" Width="290"/>
                 <Button Click="Button_Click">搜索</Button>
             </StackPanel>
-            <TextBlock>搜索输入范例</TextBlock>
+            <TextBlock>搜索输入范例：</TextBlock>
             <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left">#FF0000</TextBox>
             <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left">R=0 G=0</TextBox>
             <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left">#008000 R&lt;64 B&lt;64</TextBox>
@@ -42,6 +42,7 @@
                     <Setter Property="TextAlignment" Value="Center"/>
                 </Style>
                 <Style TargetType="TextBox">
+                    <Setter Property="IsReadOnly" Value="True"/>
                     <Setter Property="Width" Value="128"/>
                     <Setter Property="TextAlignment" Value="Center"/>
                 </Style>
