@@ -33,50 +33,41 @@ namespace MabinogiDyeColors
 
         int i = 0;
         int moreColorsTimes = 0;
+        Color[] pallete = new Color[39464];
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(input.Text)) return;
             var searchStrings = input.Text.Split(' ');
-            Color[] pallete = new Color[] { };
-            List<Color> results = new List<Color>();
-            if (cloth.IsChecked == true) pallete = Palettes.CLOTH;
-            if (cloth_bright.IsChecked == true) pallete = Palettes2.CLOTH_BRIGHT;
-            if (leather.IsChecked == true) pallete = Palettes3.LEATHER;
-            if (silk.IsChecked == true) pallete = Palettes.SILK;
-            if (metal.IsChecked == true) pallete = Palettes4.METAL;
-            if (weapon.IsChecked == true) pallete = Palettes.WEAPON;
-            foreach (Color c in pallete)
-                {
-                    results.Add(c);
-                }
-            output.Children.Clear();
+            if (cloth.IsChecked == true) Palettes.CLOTH.CopyTo(pallete,0);
+            if (cloth_bright.IsChecked == true) Palettes2.CLOTH_BRIGHT.CopyTo(pallete, 0);
+            if (leather.IsChecked == true) Palettes3.LEATHER.CopyTo(pallete, 0);
+            if (silk.IsChecked == true) Palettes.SILK.CopyTo(pallete, 0);
+            if (metal.IsChecked == true) Palettes4.METAL.CopyTo(pallete, 0);
+            if (weapon.IsChecked == true) Palettes.WEAPON.CopyTo(pallete, 0);
+            output.Items.Clear();
             foreach(var str in searchStrings)
             {
                 if (string.IsNullOrWhiteSpace(str)) continue;
-                if (Regex.IsMatch(str, @"[0-9a-f]{6}$"))
+                if (Regex.IsMatch(str, @"[0-9a-fA-F]{6}$"))
                 {
                     var s = str;
                     if (s[0] == '#') s = s.Substring(1);
                     Color target = Color.FromRgb(byte.Parse(s.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(s.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(s.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
-                    output.Children.Add(new TextBlock() { Background = new SolidColorBrush(target), Text = "目标颜色", Foreground = CalculateForeground(target) });
-                    results.Sort((a, b) =>
+                    output.Items.Add(new TextBlock() { Background = new SolidColorBrush(target), Text = "目标颜色", Foreground = CalculateForeground(target), Width = 128, TextAlignment = TextAlignment.Center });
+                    Array.Sort(pallete, (a, b) =>
                         (int)(2 * Math.Pow(a.R - target.R, 2) + 4 * Math.Pow(a.G - target.G, 2) + 3 * Math.Pow(a.B - target.B, 2) - 
                         (2 * Math.Pow(b.R - target.R, 2) + 4 * Math.Pow(b.G - target.G, 2) + 3 * Math.Pow(b.B - target.B, 2))));
                 }
                 else MessageBox.Show("早期草稿版，只支持颜色代码搜索，无法筛选RGB值。");
             }
-            if (results.Count == 0)
-            {
-                output.Children.Add(new TextBlock() { Text = "无匹配颜色" });
-            }
-            else
+
             {
                 int n = 0;
-                foreach (var c in results)
+                foreach (var c in pallete)
                 {
-                    output.Children.Add(new TextBox() { Background = new SolidColorBrush(c), Text = "#" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2"), Foreground = CalculateForeground(c) });
+                    output.Items.Add(new TextBox() { Background = new SolidColorBrush(c), Text = "#" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2"), Foreground = CalculateForeground(c), Width = 128, TextAlignment = TextAlignment.Center, IsReadOnly = true, BorderThickness = new Thickness() });
                     n++;
-                    if (n > 300) break;
+                    if (n > 900) break;
                 }
             }
         }
@@ -86,7 +77,7 @@ namespace MabinogiDyeColors
             var hyperlink = sender as Hyperlink;
             if (hyperlink != null)
             {
-                string navigateUri = "https://snowyyang.me/mabinogi/dye-colors"; // 替换为你想要导航的 URL
+                string navigateUri = "https://snowyyang.dev/mabinogi/dye-colors"; // 替换为你想要导航的 URL
                 System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
                 {
                     FileName = navigateUri,
@@ -101,7 +92,7 @@ namespace MabinogiDyeColors
             System.Windows.Forms.ColorDialog colorDialog = new System.Windows.Forms.ColorDialog();
             colorDialog.ShowDialog();
             var color = colorDialog.Color;
-            input.Text += "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
+            input.Text = "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
         }
 
         private void input_KeyDown(object sender, KeyEventArgs e)
