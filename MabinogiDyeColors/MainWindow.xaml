@@ -37,7 +37,7 @@
             <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left" Opacity="0.05">#008000 R&lt;64 B&lt;64</TextBox>
         </StackPanel>
         <TextBlock Margin="0 235 0 0" HorizontalAlignment="Right">
-            <Hyperlink Click="Hyperlink_Click">https://snowyyang.dev/mabinogi/dye-colors</Hyperlink>
+            <Hyperlink Click="Hyperlink_Click">snowyyang@outlook.com</Hyperlink>
         </TextBlock>
         <ScrollViewer Margin="0 260 0 0">
             <ItemsControl x:Name="output" ScrollViewer.CanContentScroll="True" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling">

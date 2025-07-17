@@ -77,7 +77,7 @@ namespace MabinogiDyeColors
             var hyperlink = sender as Hyperlink;
             if (hyperlink != null)
             {
-                string navigateUri = "https://snowyyang.dev/mabinogi/dye-colors"; // 替换为你想要导航的 URL
+                string navigateUri = "mailto:snowyyang@outlook.com"; // 替换为你想要导航的 URL
                 System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
                 {
                     FileName = navigateUri,
