@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MabinogiDyeColors"
         mc:Ignorable="d"
-        Title="洛奇染色药水颜色代码查询v0.3" Height="450" Width="810" FontSize="20">
+        Title="洛奇染色药水颜色代码查询v0.31" Height="600" Width="700" FontSize="20">
     <Grid>
         <Image x:Name="img" Source="/cloth.png" Width="256" Height="256" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <StackPanel Margin="260 0 0 0">
@@ -36,27 +36,25 @@
             <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left" Opacity="0.05">R=0 G=0</TextBox>
             <TextBox IsReadOnly="True" BorderThickness="0" Width="300" HorizontalAlignment="Left" Opacity="0.05">#008000 R&lt;64 B&lt;64</TextBox>
         </StackPanel>
-        <TextBlock Margin="0 235 0 0" HorizontalAlignment="Right">
+        <TextBlock FontSize="12" Margin="0 230 6 0" HorizontalAlignment="Right">
             <Hyperlink Click="Hyperlink_Click">snowyyang@outlook.com</Hyperlink>
         </TextBlock>
         <ScrollViewer Margin="0 260 0 0">
             <ItemsControl x:Name="output" ScrollViewer.CanContentScroll="True" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling">
+                <ItemsControl.Resources>
+                    <Style TargetType="TextBox">
+                        <Setter Property="IsReadOnly" Value="True"/>
+                        <Setter Property="Padding" Value="5"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Width" Value="128"/>
+                        <Setter Property="TextAlignment" Value="Center"/>
+                    </Style>
+                </ItemsControl.Resources>
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel IsItemsHost="True"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
-                <!--ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <TextBox Background="{Binding Background}" 
-                         Text="{Binding Text}" 
-                         Foreground="{Binding Foreground}"
-                         BorderThickness="0"
-                         IsReadOnly="True"
-                         Width="128"
-                         TextAlignment="Center"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate-->
             </ItemsControl>
         </ScrollViewer>
     </Grid>

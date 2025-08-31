@@ -53,7 +53,7 @@ namespace MabinogiDyeColors
                     var s = str;
                     if (s[0] == '#') s = s.Substring(1);
                     Color target = Color.FromRgb(byte.Parse(s.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(s.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(s.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
-                    output.Items.Add(new TextBlock() { Background = new SolidColorBrush(target), Text = "目标颜色", Foreground = CalculateForeground(target), Width = 128, TextAlignment = TextAlignment.Center });
+                    output.Items.Add(new TextBox() { Background = new SolidColorBrush(target), Text = "目标颜色", Foreground = CalculateForeground(target) });
                     Array.Sort(pallete, (a, b) =>
                         (int)(2 * Math.Pow(a.R - target.R, 2) + 4 * Math.Pow(a.G - target.G, 2) + 3 * Math.Pow(a.B - target.B, 2) - 
                         (2 * Math.Pow(b.R - target.R, 2) + 4 * Math.Pow(b.G - target.G, 2) + 3 * Math.Pow(b.B - target.B, 2))));
@@ -65,7 +65,7 @@ namespace MabinogiDyeColors
                 int n = 0;
                 foreach (var c in pallete)
                 {
-                    output.Items.Add(new TextBox() { Background = new SolidColorBrush(c), Text = "#" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2"), Foreground = CalculateForeground(c), Width = 128, TextAlignment = TextAlignment.Center, IsReadOnly = true, BorderThickness = new Thickness() });
+                    output.Items.Add(new TextBox() { Background = new SolidColorBrush(c), Text = "#" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2"), Foreground = CalculateForeground(c) });
                     n++;
                     if (n > 900) break;
                 }
